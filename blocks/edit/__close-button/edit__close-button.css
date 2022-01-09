@@ -1,0 +1,25 @@
+.edit__close-button {
+  background-image: url("../../../images/Close.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  border: none;
+  cursor: pointer;
+}
+.edit__close-button:hover {
+  opacity: 0.6;
+  transition: 0.5s;
+}
+@media (min-width: 320px) and (max-width: 1279px) {
+  .edit__close-button {
+    width: 20px;
+    height: 20px;
+    top: -36px;
+    right: 0;
+  }
+}

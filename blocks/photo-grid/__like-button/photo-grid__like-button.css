@@ -1,0 +1,13 @@
+.photo-grid__like-button {
+  min-width: 22px;
+  height: 19px;
+  background-image: url("../../../images/Like.svg");
+  background-size: contain;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+.photo-grid__like-button:hover {
+  opacity: 0.6;
+  transition: 0.5s;
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>Место</title>
+  </head>
+  <body class="root">
+    <div class="page">
+      <header class="header">
+        <div class="header__logo"></div>
+      </header>
+      <main class="content">
+        <section class="user">
+          <div class="user__info">
+            <img
+              class="user__image"
+              src="./images/user.png"
+              alt="Изображение пользователя"
+            />
+            <div class="user__data">
+              <div class="user__container">
+                <h1 class="user__name">Жак-Ив Кусто</h1>
+                <button type="button" class="user__edit-button"></button>
+              </div>
+              <h2 class="user__status">Исследователь океана</h2>
+            </div>
+          </div>
+          <button type="button" class="user__add-button"></button>
+        </section>
+        <section class="photo-grid">
+          <ul class="photo-grid__list">
+            <li class="photo-grid__item">
+              <img
+                class="photo-grid__image"
+                src="./images/kirill-pershin-1088404-unsplash.png"
+                alt="Карачаевск"
+              />
+              <div class="photo-grid__info">
+                <h3 class="photo-grid__place">Карачаевск</h3>
+                <button type="button" class="photo-grid__like-button"></button>
+              </div>
+            </li>
+            <li class="photo-grid__item">
+              <img
+                class="photo-grid__image"
+                src="./images/kirill-pershin-1404681-unsplash.png"
+                alt="Гора Эльбрус"
+              />
+              <div class="photo-grid__info">
+                <h3 class="photo-grid__place">Гора Эльбрус</h3>
+                <button type="button" class="photo-grid__like-button"></button>
+              </div>
+            </li>
+            <li class="photo-grid__item">
+              <img
+                class="photo-grid__image"
+                src="./images/kirill-pershin-1556355-unsplash.png"
+                alt="Домбай"
+              />
+              <div class="photo-grid__info">
+                <h3 class="photo-grid__place">Домбай</h3>
+                <button type="button" class="photo-grid__like-button"></button>
+              </div>
+            </li>
+            <li class="photo-grid__item">
+              <img
+                class="photo-grid__image"
+                src="./images/kirill-pershin-1088404-unsplash.png"
+                alt="Карачаевск"
+              />
+              <div class="photo-grid__info">
+                <h3 class="photo-grid__place">Карачаево-Черкессия</h3>
+                <button type="button" class="photo-grid__like-button"></button>
+              </div>
+            </li>
+            <li class="photo-grid__item">
+              <img
+                class="photo-grid__image"
+                src="./images/kirill-pershin-1404681-unsplash.png"
+                alt="Гора Эльбрус"
+              />
+              <div class="photo-grid__info">
+                <h3 class="photo-grid__place">Гора Эльбрус</h3>
+                <button type="button" class="photo-grid__like-button"></button>
+              </div>
+            </li>
+            <li class="photo-grid__item">
+              <img
+                class="photo-grid__image"
+                src="./images/kirill-pershin-1556355-unsplash.png"
+                alt="Домбай"
+              />
+              <div class="photo-grid__info">
+                <h3 class="photo-grid__place">Домбай</h3>
+                <button type="button" class="photo-grid__like-button"></button>
+              </div>
+            </li>
+          </ul>
+        </section>
+        <form class="edit">
+          <h2 class="edit__title">Редактировать профиль</h2>
+          <input
+            id="input_user_name"
+            type="text"
+            class="edit__data"
+            placeholder="Введите имя"
+          />
+          <input
+            id="input_user_status"
+            type="text"
+            class="edit__data"
+            placeholder="Введите статус"
+          />
+          <button type="submit" class="edit__save-button">Сохранить</button>
+          <button type="button" class="edit__close-button"></button>
+        </form>
+        <div class="overlay"></div>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">&copy;2021 Mesto Russia</p>
+      </footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+.user__name {
+  margin: 0;
+  font-size: 42px;
+}
+@media (min-width: 320px) and (max-width: 1279px) {
+  .user__name {
+    font-size: 27px;
+    margin-top: 22px;
+  }
+}

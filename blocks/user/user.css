@@ -1,0 +1,15 @@
+.user {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 200px;
+  padding: 36px 0 47px;
+  border-top: 1px #545454 solid;
+  align-items: center;
+}
+@media (min-width: 320px) and (max-width: 1279px) {
+  .user {
+    margin: 0;
+    padding: 38px 0 36px;
+    flex-direction: column;
+  }
+}
