@@ -99,29 +99,34 @@
             </li>
           </ul>
         </section>
-        <form class="edit">
-          <h2 class="edit__title">Редактировать профиль</h2>
-          <input
-            id="input_user_name"
-            type="text"
-            class="edit__data"
-            placeholder="Введите имя"
-          />
-          <input
-            id="input_user_status"
-            type="text"
-            class="edit__data"
-            placeholder="Введите статус"
-          />
-          <button type="submit" class="edit__save-button">Сохранить</button>
-          <button type="button" class="edit__close-button"></button>
-        </form>
-        <div class="overlay"></div>
+        <div class="popup">
+          <div class="edit">
+            <h2 class="edit__title">Редактировать профиль</h2>
+            <form class="edit__form">
+              <input
+                id="input_user_name"
+                type="text"
+                class="edit__data"
+                placeholder="Введите имя"
+                name="userEditName"
+              />
+              <input
+                id="input_user_status"
+                type="text"
+                class="edit__data"
+                placeholder="Введите статус"
+                name="userEditStatus"
+              />
+              <button type="submit" class="edit__save-button">Сохранить</button>
+            </form>
+            <button type="button" class="popup__close-button"></button>
+          </div>
+        </div>
       </main>
       <footer class="footer">
         <p class="footer__copyright">&copy;2021 Mesto Russia</p>
       </footer>
     </div>
-    <script src="script.js"></script>
+    <script src="/scripts/script.js"></script>
   </body>
 </html>

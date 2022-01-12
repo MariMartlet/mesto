@@ -3,7 +3,7 @@
   justify-content: space-between;
   margin: 0 200px;
   padding: 36px 0 47px;
-  border-top: 1px #545454 solid;
+  border-top: 1px rgba(54, 54, 54, 0.7) solid;
   align-items: center;
 }
 @media (min-width: 320px) and (max-width: 1279px) {

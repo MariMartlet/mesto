@@ -11,10 +11,10 @@
   cursor: pointer;
   margin-left: 18px;
   margin-top: 9px;
+  transition: all 1s ease-out;
 }
 .user__edit-button:hover {
   opacity: 0.6;
-  transition: 0.5s;
 }
 @media (min-width: 320px) and (max-width: 1279px) {
   .user__edit-button {

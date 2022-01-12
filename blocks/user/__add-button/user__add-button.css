@@ -6,15 +6,17 @@
   background-image: url("../../../images/add.svg");
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 22px 22px;
   cursor: pointer;
+  transition: all 1s ease-out;
 }
 .user__add-button:hover {
   opacity: 0.6;
-  transition: 0.5s;
 }
 @media (min-width: 320px) and (max-width: 1279px) {
   .user__add-button {
     margin-top: 36px;
     width: 282px;
+    background-size: 16px 16px;
   }
 }

@@ -1,7 +1,6 @@
-const popupCloseButton = document.querySelector(".edit__close-button");
+const popupCloseButton = document.querySelector(".popup__close-button");
 const popupOpenButton = document.querySelector(".user__edit-button");
-const popup = document.querySelector(".edit");
-const overlay = document.querySelector(".overlay");
+const popup = document.querySelector(".popup");
 const userEditSaveButton = document.querySelector(".edit__save-button");
 let userName = document.querySelector(".user__name");
 let userStatus = document.querySelector(".user__status");
@@ -15,12 +14,10 @@ function userDataEditSave(event) {
   closePopup();
 }
 function closePopup() {
-  popup.classList.remove("edit_open");
-  overlay.classList.remove("overlay_visible");
+  popup.classList.remove("popup_open");
 }
 function openPopup() {
-  overlay.classList.add("overlay_visible");
-  popup.classList.add("edit_open");
+  popup.classList.add("popup_open");
   newUserStatus.value = userStatus.textContent;
   newUserName.value = userName.textContent;
 }

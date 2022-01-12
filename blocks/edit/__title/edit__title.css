@@ -1,19 +1,14 @@
 .edit__title {
   color: black;
-  text-align: center;
-  font-family: Inter;
   font-size: 24px;
-  font-style: normal;
   font-weight: 900;
   line-height: 29px;
-  margin: 34px 0 24px;
+  margin: 34px 0px 24px 36px;
 }
 @media (min-width: 320px) and (max-width: 1279px) {
   .edit__title {
-    font-family: Inter;
     font-size: 18px;
-    font-style: normal;
-    font-weight: 900;
     line-height: 22px;
+    margin: 25px 0px 45px 22px;
   }
 }
