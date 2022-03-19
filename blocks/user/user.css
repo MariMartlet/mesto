@@ -6,10 +6,22 @@
   border-top: 1px rgba(54, 54, 54, 0.7) solid;
   align-items: center;
 }
-@media (min-width: 320px) and (max-width: 1279px) {
+@media (min-width: 320px) and (max-width: 767px) {
   .user {
     margin: 0;
     padding: 38px 0 36px;
     flex-direction: column;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .user {
+    margin: 0;
+    padding: 38px 8vw 36px;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .user {
+    margin: 0;
+    padding: 38px 15.6vw 36px;
   }
 }

@@ -20,11 +20,15 @@
               alt="Изображение пользователя"
             />
             <div class="user__data">
+              <!-- попыталась рассчитать новые отступы с учетом того, что фактическая
+              высота блоков в фигме и верстке отличаются (например, в макете хвостик
+              У не является частью блока с текстом, в котором находится У, а при верстке 
+              является), если прям пиксель в пиксель не получилось, то не бейте пожалуйста-->
               <div class="user__container">
                 <h1 class="user__name">Жак-Ив Кусто</h1>
                 <button type="button" class="user__edit-button"></button>
               </div>
-              <h2 class="user__status">Исследователь океана</h2>
+              <p class="user__status">Исследователь океана</p>
             </div>
           </div>
           <button type="button" class="user__add-button"></button>
@@ -102,7 +106,7 @@
         <div class="popup">
           <div class="edit">
             <h2 class="edit__title">Редактировать профиль</h2>
-            <form class="edit__form">
+            <form name="author_info" class="edit__form">
               <input
                 id="input_user_name"
                 type="text"
@@ -127,6 +131,6 @@
         <p class="footer__copyright">&copy;2021 Mesto Russia</p>
       </footer>
     </div>
-    <script src="/scripts/script.js"></script>
+    <script src="./scripts/script.js"></script>
   </body>
 </html>

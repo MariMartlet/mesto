@@ -13,9 +13,9 @@
 .user__add-button:hover {
   opacity: 0.6;
 }
-@media (min-width: 320px) and (max-width: 1279px) {
+@media (min-width: 320px) and (max-width: 767px) {
   .user__add-button {
-    margin-top: 36px;
+    margin-top: 30px;
     width: 282px;
     background-size: 16px 16px;
   }
