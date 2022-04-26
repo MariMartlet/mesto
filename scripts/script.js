@@ -1,28 +1,26 @@
 const popupCloseButton = document.querySelector(".popup__close-button");
 const popupOpenButton = document.querySelector(".user__edit-button");
 const popup = document.querySelector(".popup");
-const userEditSaveButton = document.querySelector(".edit__save-button");
 let userName = document.querySelector(".user__name");
 let userStatus = document.querySelector(".user__status");
 let newUserName = document.getElementById("input_user_name");
 let newUserStatus = document.getElementById("input_user_status");
 
-function userDataEditSave(event) {
-  event.preventDefault();
-  userName.textContent = newUserName.value;
-  userStatus.textContent = newUserStatus.value;
-  closePopup();
+function SaveUserDataEdit(event) {
+  event.preventDefault(); //отмена стандартной отправки
+  userName.textContent = newUserName.value; //присваивание нового имени
+  userStatus.textContent = newUserStatus.value; //присваивание нового статуса
+  closePopup(); //вызов закрытия попапа
 }
-function closePopup() {
-  popup.classList.remove("popup_open");
+function closePopup() { //функция закрытия попапа
+  popup.classList.remove("popup_open"); 
 }
-function openPopup() {
+function openPopup() {  //функция открытия попапа
   popup.classList.add("popup_open");
-  newUserStatus.value = userStatus.textContent;
-  newUserName.value = userName.textContent;
+  newUserStatus.value = userStatus.textContent; //считывание данных о статусе
+  newUserName.value = userName.textContent; //считывание данных об имени
 }
 
-popupCloseButton.addEventListener("click", closePopup);
-popupOpenButton.addEventListener("click", openPopup);
-
-userEditSaveButton.addEventListener("click", userDataEditSave);
+popupCloseButton.addEventListener("click", closePopup); //закрытие попапа по клику
+popupOpenButton.addEventListener("click", openPopup); //открытие попапа по клику
+author_info.addEventListener("submit", SaveUserDataEdit); //сохранение данных при отправке формы

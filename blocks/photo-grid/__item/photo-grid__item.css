@@ -1,6 +1,5 @@
 .photo-grid__item {
   width: 282px;
-  height: 360px;
-  border-radius: 15px;
+  border-radius: 10px;
   background-color: white;
 }

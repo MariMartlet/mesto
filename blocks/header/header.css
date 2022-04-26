@@ -1,7 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
-  margin: 45px auto;
+  margin: 43px auto;
   max-width: 880px;
 }
 @media (min-width: 320px) and (max-width: 767px) {
@@ -17,6 +17,6 @@
 }
 @media (min-width: 1024px) and (max-width: 1280px) {
   .header {
-    margin: 45px 15.6vw;
+    margin: 43px 15.6vw;
   }
 }

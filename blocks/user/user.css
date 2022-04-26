@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   margin: 0 200px;
-  padding: 36px 0 47px;
+  padding: 36px 0 52px;
   border-top: 1px rgba(54, 54, 54, 0.7) solid;
   align-items: center;
 }
@@ -16,12 +16,12 @@
 @media (min-width: 768px) and (max-width: 1023px) {
   .user {
     margin: 0;
-    padding: 38px 8vw 36px;
+    padding: 38px 8vw 52px;
   }
 }
 @media (min-width: 1024px) and (max-width: 1280px) {
   .user {
     margin: 0;
-    padding: 38px 15.6vw 36px;
+    padding: 38px 15.6vw 52px;
   }
 }
