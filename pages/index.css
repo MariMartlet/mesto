@@ -20,12 +20,12 @@
 @import url(../blocks/user/__info/user__info.css);
 @import url(../blocks/user/__data/user__data.css);
 @import url(../blocks/user/__container/user__container.css);
-@import url(../blocks/edit/edit.css);
-@import url(../blocks/edit/__data/edit__data.css);
-@import url(../blocks/edit/__form/edit__form.css);
-@import url(../blocks/edit/__save-button/edit__save-button.css);
-@import url(../blocks/edit/__title/edit__title.css);
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__content/popup__content.css);
+@import url(../blocks/popup/__data/popup__data.css);
+@import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup/__save-button/popup__save-button.css);
+@import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__close-button/popup__close-button.css);
 @import url(../blocks/popup/_open/popup_open.css);
 @import url(../blocks/footer/footer.css);

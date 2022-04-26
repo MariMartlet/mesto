@@ -1,4 +1,4 @@
-.edit__save-button {
+.popup__save-button {
   height: 50px;
   width: 358px;
   background-color: black;
@@ -12,11 +12,11 @@
   transition: all 1s ease-out;
   border-radius: 2px;
 }
-.edit__save-button:hover {
+.popup__save-button:hover {
   opacity: 0.8;
 }
 @media (min-width: 320px) and (max-width: 767px) {
-  .edit__save-button {
+  .popup__save-button {
     width: 238px;
     height: 46px;
     font-size: 14px;

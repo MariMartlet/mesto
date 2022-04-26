@@ -1,4 +1,4 @@
-.edit__title {
+.popup__title {
   color: black;
   font-size: 24px;
   font-weight: 900;
@@ -6,7 +6,7 @@
   margin: 34px 0px 15px 36px;
 }
 @media (min-width: 320px) and (max-width: 767px) {
-  .edit__title {
+  .popup__title {
     font-size: 18px;
     line-height: 22px;
     margin: 25px 0px 40px 22px;

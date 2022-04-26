@@ -1,4 +1,4 @@
-.edit__data {
+.popup__data {
   font-size: 14px;
   font-weight: 400;
   line-height: 17px;
@@ -10,7 +10,7 @@
   margin-top: 30px;
 }
 @media (min-width: 320px) and (max-width: 767px) {
-  .edit__data {
+  .popup__data {
     width: 238px;
   }
 }
