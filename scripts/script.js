@@ -5,8 +5,9 @@ let userName = document.querySelector(".user__name");
 let userStatus = document.querySelector(".user__status");
 let newUserName = document.getElementById("input_user_name");
 let newUserStatus = document.getElementById("input_user_status");
+let authorInfo= document.querySelector(".popup__form");
 
-function SaveUserDataEdit(event) {
+function saveUserDataEdit(event) {
   event.preventDefault(); //отмена стандартной отправки
   userName.textContent = newUserName.value; //присваивание нового имени
   userStatus.textContent = newUserStatus.value; //присваивание нового статуса
@@ -23,4 +24,4 @@ function openPopup() {  //функция открытия попапа
 
 popupCloseButton.addEventListener("click", closePopup); //закрытие попапа по клику
 popupOpenButton.addEventListener("click", openPopup); //открытие попапа по клику
-author_info.addEventListener("submit", SaveUserDataEdit); //сохранение данных при отправке формы
+authorInfo.addEventListener("submit", saveUserDataEdit); //сохранение данных при отправке формы

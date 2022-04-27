@@ -4,7 +4,7 @@
   background-image: url("../../../images/Like.svg");
   background-size: contain;
   border: none;
-  background-color: white;
+  background-color: transparent;
   cursor: pointer;
   transition: all 1s ease-out;
 }

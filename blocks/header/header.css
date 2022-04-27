@@ -3,6 +3,7 @@
   justify-content: space-between;
   margin: 43px auto;
   max-width: 880px;
+  border-bottom: 1px rgba(84, 84, 84, 0.7) solid;
 }
 @media (min-width: 320px) and (max-width: 767px) {
   .header {
