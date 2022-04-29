@@ -1,4 +1,5 @@
 .photo-grid__item {
+  position: relative;
   width: 282px;
   border-radius: 10px;
   background-color: white;

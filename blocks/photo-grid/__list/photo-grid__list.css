@@ -1,4 +1,4 @@
-.photo-grid__list {
+/* .photo-grid__list {
   display: grid;
   grid-template-columns: repeat(auto-fit, 282px);
   column-gap: 17px;
@@ -8,4 +8,4 @@
   padding: 0;
   margin: 0 auto;
   justify-content: center;
-}
+} */

@@ -6,7 +6,7 @@
 * описание проекта
 
 **Интро**
-* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1  и https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1)
 * [Ссылка на проект на GitHub Pages](https://marimartlet.github.io/mesto/index.html)
 
 
@@ -16,7 +16,8 @@
 3. addEventListener
 4. getElementById
 5. classList
-
+6. template
+7. prepend
 
 **описание проекта**
 Учебный проект по курсам Яндекс Практикума "Веб-разработчик". Данная работа посвещена закреплению навыков верстки, а также началу изучения JS.
