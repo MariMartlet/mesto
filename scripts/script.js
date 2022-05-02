@@ -29,67 +29,65 @@ const initialCards = [
 const popupUser = document.querySelector("#edit_user");
 const popupOpenButtonUser = document.querySelector(".user__edit-button");
 const popupCloseButtonUser = popupUser.querySelector(".popup__close-button");
-let userName = document.querySelector(".user__name");
-let userStatus = document.querySelector(".user__status");
-let newUserName = document.querySelector(".popup__input_name");
-let newUserStatus = document.querySelector(".popup__input_status");
-let userSubmit = popupUser.querySelector(".popup__form");
+const userName = document.querySelector(".user__name");
+const userStatus = document.querySelector(".user__status");
+const newUserName = document.querySelector(".popup__input_name");
+const newUserStatus = document.querySelector(".popup__input_status");
+const userSubmit = popupUser.querySelector(".popup__form");
 
 //переменные для работы попапа c добавлением карточки
 const popupOpenButtonPlace = document.querySelector(".user__add-button");
 const popupCard = document.querySelector("#add_card");
 const popupCloseButtonPlace = popupCard.querySelector(".popup__close-button");
-let cardContainer = document.querySelector(".photo-grid");
-let cardTemplate = document.querySelector("#card-template").content;
-let newPlaceTitle = document.querySelector(".popup__input_title");
-let newPlaceImage = document.querySelector(".popup__input_image");
-let cardSubmit = popupCard.querySelector(".popup__form");
+const cardContainer = document.querySelector(".photo-grid");
+const cardTemplate = document.querySelector("#card-template").content;
+const newPlaceTitle = document.querySelector(".popup__input_title");
+const newPlaceImage = document.querySelector(".popup__input_image");
+const cardSubmit = popupCard.querySelector(".popup__form");
 
+// переменные для работы попапа с изображением
 const popupImage = document.querySelector("#view-image");
+const popupImageText = popupImage.querySelector(".popup__text");
+const popupImageImage = popupImage.querySelector(".popup__image");
+const popupCloseButtonImage = popupImage.querySelector(".popup__close-button");
 
-function openPopupUser() {
-  //функция открытия попапа c редактированием данных пользователя
-  popupUser.classList.add("popup_open");
+function openPopup(PopupType) {
+  //функция открытия попапа
+  PopupType.classList.add("popup_open");
+}
+function closePopup(PopupType) {
+  //функция закрытия попапа
+  PopupType.classList.remove("popup_open");
+}
+function readUserData() {
   newUserStatus.value = userStatus.textContent; //считывание данных о статусе
   newUserName.value = userName.textContent; //считывание данных об имени
+  openPopup(popupUser);
 }
-function closePopupUser() {
-  //функция закрытия попапа с редактированием
-  popupUser.classList.remove("popup_open");
-}
-function saveUserDataEdit(event) {
+function saveUserDataEdit(evt) {
   evt.preventDefault(); //отмена стандартной отправки
   userName.textContent = newUserName.value; //присваивание нового имени
   userStatus.textContent = newUserStatus.value; //присваивание нового статуса
-  closePopupUser(); //вызов закрытия попапа
+  closePopup(popupUser); //вызов закрытия попапа
 }
-function openClosePopupPlace() {
-  //функция открытия и закрытия попапа c добавлением новой карточки
-  popupCard.classList.toggle("popup_open");
+function readPlaceData(evt) {
+  evt.preventDefault(); // отмена стандартной обработки
+  popupImageText.textContent = evt.target.alt;
+  popupImageImage.alt = evt.target.alt;
+  popupImageImage.src = evt.target.src;
+  openPopup(popupImage);
 }
-function openClosePopupImage(cardNew) {
-  cardNew
-    .querySelector(".photo-grid__image")
-    .addEventListener("click", function (evt) {
-      popupImage.classList.add("popup_open");
-      popupImage.querySelector(".popup__text").textContent = evt.target.alt;
-      popupImage.querySelector(".popup__image").alt = evt.target.alt;
-      popupImage.querySelector(".popup__image").src = evt.target.src;
-      popupImage
-        .querySelector(".popup__close-button")
-        .addEventListener("click", function (evt) {
-          popupImage.classList.remove("popup_open");
-        });
-    });
-}
-function createCard(cardTitle, cardLink) {
+
+function createCard(item) {
   //создание новой карточки
   const cardNew = cardTemplate.cloneNode(true); //копируем template со структурой карточки
+  const placeTitle = cardNew.querySelector(".photo-grid__place");
+  const placeImage = cardNew.querySelector(".photo-grid__image");
   // указываем откуда брать данные для подстановки
-  cardNew.querySelector(".photo-grid__place").textContent = cardTitle;
-  cardNew.querySelector(".photo-grid__image").alt = cardTitle;
-  cardNew.querySelector(".photo-grid__image").src = cardLink;
-  // функция для работы лайка (prettier зачем-то решил, что данный фрагмент кода должен выглядить именно так)
+  placeTitle.textContent = item.name;
+  placeImage.alt = item.name;
+  placeImage.src = item.link;
+  // слушатель для работы лайка (prettier зачем-то решил, что данный фрагмент кода должен выглядить именно так)
   cardNew
     .querySelector(".photo-grid__like-button")
     .addEventListener("click", function (evt) {
@@ -101,30 +99,26 @@ function createCard(cardTitle, cardLink) {
     .addEventListener("click", function (evt) {
       evt.target.parentElement.remove(evt);
     });
-  openClosePopupImage(cardNew);
-  cardContainer.prepend(cardNew); //добавляем получившуюся карточку в начало контейнера
-  newPlaceTitle.value = ""; //"обнуляем" значения полей с данными
-  newPlaceImage.value = "";
-  openClosePopupPlace(); //закрываем попап
+  placeImage.addEventListener("click", readPlaceData);
+  return cardNew;
 }
 function addCard(evt) {
   //добавление новой карточки
   evt.preventDefault(); //отмена стандартной отправки
-  cardTitle = newPlaceTitle.value; //название новой карточки
-  cardLink = newPlaceImage.value; //ссылка на изображение новой карточки
-  createCard(cardTitle, cardLink);
+  cardContainer.prepend(
+    createCard({ name: newPlaceTitle.value, link: newPlaceImage.value })
+  );
+  closePopup(popupCard);
+  //"обнуляем" значения формы
+  cardSubmit.reset();
 }
 //вывод массива с начальными карточками
-initialCards.forEach(function (item) {
-  //для каждого элемента массива вызываем функцию создания карточки, которой передаем соответствущие названия и ссылки
-  cardTitle = item.name;
-  cardLink = item.link;
-  createCard(cardTitle, cardLink);
-});
+initialCards.map((item) => cardContainer.prepend(createCard(item)));
 
-popupCloseButtonUser.addEventListener("click", closePopupUser); //закрытие попапа c редактированием данных пользователя
-popupCloseButtonPlace.addEventListener("click", openClosePopupPlace); //закрытие попапа c добавлением новой карточки
-popupOpenButtonUser.addEventListener("click", openPopupUser); //открытие попапа c редактированием данных пользователя
-popupOpenButtonPlace.addEventListener("click", openClosePopupPlace); //открытие попапа c добавлением новой карточки
+popupCloseButtonUser.addEventListener("click", () => closePopup(popupUser)); //закрытие попапа c редактированием данных пользователя
+popupCloseButtonPlace.addEventListener("click", () => closePopup(popupCard)); //закрытие попапа c добавлением новой карточки
+popupOpenButtonUser.addEventListener("click", readUserData); //чтение данных и открытие попапа c редактированием данных пользователя
+popupOpenButtonPlace.addEventListener("click", () => openPopup(popupCard)); //открытие попапа c добавлением новой карточки
+popupCloseButtonImage.addEventListener("click", () => closePopup(popupImage)); //закрытие попапа c изображением
 userSubmit.addEventListener("submit", saveUserDataEdit); //сохранение данных попапа c редактированием данных пользователя
 cardSubmit.addEventListener("submit", addCard); //сохранение попапа c добавлением новой карточки
