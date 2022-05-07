@@ -4,32 +4,32 @@ const formObject = {
   submitButtonSelector: ".popup__save-button",
   inactiveButtonClass: "popup__save-button_disabled",
   inputErrorClass: "popup__input_error",
-  errorClass: "popup__input_error-visible",
+  errorClass: "popup__input_error-text-visible",
   fields: ".popup__set",
 };
 
-//показываем сообщение об обшибке
+// показываем сообщение об ошибке
 const showInputError = (formElement, inputElement, errorMessage, { inputErrorClass, errorClass, ...rest }) => {
-  const errorElement = formElement.querySelector(`.${inputElement.name}-error`);
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(inputErrorClass);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(errorClass);
 };
-//скрываем сообщение об ошибке
+// скрываем сообщение об ошибке
 const hideInputError = (formElement, inputElement, { inputErrorClass, errorClass, ...rest }) => {
-  const errorElement = formElement.querySelector(`.${inputElement.name}-error`);
+  const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.remove(inputErrorClass);
   errorElement.classList.remove(errorClass);
   errorElement.textContent = "";
 };
-//проверяем валидность поля
-function hasInvalidInput(inputList) {
+// проверяем валидность поля
+const hasInvalidInput = (inputList) => {
   return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
   });
-}
-//переключаем состояние кнопки
-function toggleButtonState(inputList, buttonElement, { inactiveButtonClass, ...rest }) {
+};
+// переключаем состояние кнопки
+const toggleButtonState = (inputList, buttonElement, { inactiveButtonClass, ...rest }) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.disabled = true;
     buttonElement.classList.add(inactiveButtonClass);
@@ -37,8 +37,8 @@ function toggleButtonState(inputList, buttonElement, { inactiveButtonClass, ...r
     buttonElement.disabled = false;
     buttonElement.classList.remove(inactiveButtonClass);
   }
-}
-//показываем или прячем ошибку в зависимости от валидности поля
+};
+// показываем или прячем ошибку в зависимости от валидности поля
 const checkInputValidity = (formElement, inputElement, { ...rest }) => {
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage, rest);
@@ -62,12 +62,12 @@ const setEventListeners = (formElement, { inputSelector, submitButtonSelector, .
   });
 };
 
-function enableValidation({ formSelector, fields, ...rest }) {
+const enableValidation = ({ formSelector, fields, ...rest }) => {
   const formList = Array.from(document.querySelectorAll(formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener("submit", (evt) => evt.preventDefault());
     const fieldsetList = Array.from(formElement.querySelectorAll(fields));
     fieldsetList.forEach((fieldSet) => setEventListeners(fieldSet, rest));
   });
-}
+};
 enableValidation(formObject);

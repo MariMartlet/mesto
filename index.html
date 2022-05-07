@@ -31,6 +31,7 @@
         <p class="footer__copyright">&copy;2022 Mesto Russia</p>
       </footer>
       <div class="popup" id="edit_user">
+        <div class="popup__overlay"></div>
         <div class="popup__content">
           <h2 class="popup__title">Редактировать профиль</h2>
           <form name="author_info" class="popup__form" novalidate>
@@ -46,7 +47,7 @@
                   maxlength="40"
                   required
                 />
-                <span class="popup__input_error" id="name-input-error"></span>
+                <span class="popup__input-error-text" id="input_user_name-error"></span>
               </label>
               <label class="popup__field">
                 <input
@@ -59,15 +60,16 @@
                   maxlength="200"
                   required
                 />
-                <span class="popup__input_error" id="status-input-error"></span>
+                <span class="popup__input-error-text" id="input_user_status-error"></span>
               </label>
-              <button type="submit" class="popup__save-button popup__save-button_disabled" disabled>Сохранить</button>
+              <button type="submit" class="popup__save-button">Сохранить</button>
             </fieldset>
           </form>
           <button type="button" class="popup__close-button"></button>
         </div>
       </div>
       <div class="popup" id="add_card">
+        <div class="popup__overlay"></div>
         <div class="popup__content">
           <h2 class="popup__title">Новое место</h2>
           <form name="new_card" class="popup__form" novalidate>
@@ -79,11 +81,11 @@
                   class="popup__data popup__input popup__input_title"
                   placeholder="Название"
                   name="UserPopupTitle"
-                  minlength="1"
+                  minlength="2"
                   maxlength="30"
                   required
                 />
-                <span class="popup__input_error" id="title-input-error"></span>
+                <span class="popup__input-error-text" id="input_place_title-error"></span>
               </label>
               <label class="popup__field">
                 <input
@@ -94,9 +96,9 @@
                   name="UserPopupImage"
                   required
                 />
-                <span class="popup__input_error" id="image-input-error"></span>
+                <span class="popup__input-error-text" id="input_place_image-error"></span>
               </label>
-              <button type="submit" class="popup__save-button popup__save-button_disabled" disabled>Создать</button>
+              <button type="submit" class="popup__save-button">Создать</button>
             </fieldset>
           </form>
           <button type="button" class="popup__close-button"></button>
@@ -104,6 +106,7 @@
       </div>
     </div>
     <div class="popup" id="view-image">
+      <div class="popup__overlay"></div>
       <div class="popup__container">
         <img class="popup__image" alt="" src="#" />
         <p class="popup__text"></p>
@@ -120,8 +123,7 @@
         <button type="button" class="photo-grid__trash-button"></button>
       </article>
     </template>
-
-    <script src="./scripts/script.js"></script>
     <script src="./scripts/validate.js"></script>
+    <script src="./scripts/script.js"></script>
   </body>
 </html>
