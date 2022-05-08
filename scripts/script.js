@@ -29,7 +29,6 @@ const initialCards = [
 const popupUser = document.querySelector("#edit_user");
 const popupUserOpenButton = document.querySelector(".user__edit-button");
 const popupUserCloseButton = popupUser.querySelector(".popup__close-button");
-const overlayPopupUser = popupUser.querySelector(".popup__overlay");
 const userName = document.querySelector(".user__name");
 const userStatus = document.querySelector(".user__status");
 const newUserName = document.querySelector(".popup__input_name");
@@ -40,7 +39,6 @@ const popupUserForm = popupUser.querySelector(".popup__form");
 const popupCardOpenButton = document.querySelector(".user__add-button");
 const popupCard = document.querySelector("#add_card");
 const popupCardCloseButton = popupCard.querySelector(".popup__close-button");
-const overlayPopupCard = popupCard.querySelector(".popup__overlay");
 const popupCardSaveButton = popupCard.querySelector(".popup__save-button");
 const cardContainer = document.querySelector(".photo-grid");
 const cardTemplate = document.querySelector("#card-template").content;
@@ -53,7 +51,6 @@ const popupImage = document.querySelector("#view-image");
 const popupImageText = popupImage.querySelector(".popup__text");
 const popupImageImage = popupImage.querySelector(".popup__image");
 const popupImageCloseButton = popupImage.querySelector(".popup__close-button");
-const overlayPopupImage = popupImage.querySelector(".popup__overlay");
 
 function handleEscClose(event) {
   if (event.key === "Escape") {
@@ -69,7 +66,13 @@ function closePopup(popup) {
   popup.classList.remove("popup_open");
   document.removeEventListener("keydown", handleEscClose);
 }
-
+function addCloseListeners(popup) {
+  popup.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("popup_open") || evt.target.classList.contains("popup__close-button")) {
+      closePopup(popup);
+    }
+  });
+}
 function saveUserData(evt) {
   evt.preventDefault();
   userName.textContent = newUserName.value; //присваивание нового имени
@@ -83,7 +86,6 @@ function readUserData() {
   openPopup(popupUser);
 }
 function readImageData(evt) {
-  evt.preventDefault(); // отмена стандартной обработки
   popupImageText.textContent = evt.target.alt;
   popupImageImage.alt = evt.target.alt;
   popupImageImage.src = evt.target.src;
@@ -132,11 +134,8 @@ initialCards.map((card) => cardContainer.prepend(createCard(card)));
 
 popupUserOpenButton.addEventListener("click", () => readUserData(popupUser)); //чтение данных и открытие попапа c редактированием данных пользователя
 popupCardOpenButton.addEventListener("click", () => openPopup(popupCard)); //открытие попапа c добавлением новой карточки
-popupUserCloseButton.addEventListener("click", () => closePopup(popupUser));
-overlayPopupUser.addEventListener("click", () => closePopup(popupUser));
-popupCardCloseButton.addEventListener("click", () => closePopup(popupCard));
-overlayPopupCard.addEventListener("click", () => closePopup(popupCard));
-popupImageCloseButton.addEventListener("click", () => closePopup(popupImage));
-overlayPopupImage.addEventListener("click", () => closePopup(popupImage));
+addCloseListeners(popupUser);
+addCloseListeners(popupCard);
+addCloseListeners(popupImage);
 popupUserForm.addEventListener("submit", saveUserData);
 popupCardForm.addEventListener("submit", addCard);
