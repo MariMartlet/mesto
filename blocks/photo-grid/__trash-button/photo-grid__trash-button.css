@@ -12,7 +12,9 @@
   background-position: top center, bottom center;
   background-repeat: no-repeat, no-repeat;
   cursor: pointer;
+  transition: opacity 0.3s ease-out;
 }
 .photo-grid__trash-button:hover {
   opacity: 0.5;
+  
 }

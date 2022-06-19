@@ -6,7 +6,7 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-  transition: all 1s ease-out;
+  transition: opacity 0.3s ease-out, background-image 0.3s ease-out;
 }
 .photo-grid__like-button:hover {
   opacity: 0.5;
