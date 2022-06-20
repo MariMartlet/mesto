@@ -1,41 +1,60 @@
+import { addCloseListeners, openPopup } from "./index.js";
+
+const popupImage = document.querySelector("#view-image");
+const popupImageText = popupImage.querySelector(".popup__text");
+const popupImageImage = popupImage.querySelector(".popup__image");
+
 export default class Card {
-  constructor(data, cardTemplate) {
+  constructor(data) {
     this._title = data.title;
     this._link = data.link;
-    this._cardTemplate = cardTemplate;
   }
-  //получаем template со структурой карточки
-  _getTemplate() {
-    const cardNew = document.querySelector(this._cardTemplate).content.querySelector(".photo-grid__item").cloneNode(true);
-    return cardNew;
-  }
-  //создаем карточку
-  createCard() {
+
+  _getTemplate = () => {
+    return document.querySelector("#card-template").content.querySelector(".photo-grid__item").cloneNode(true);
+  };
+
+  createCard = () => {
     this._card = this._getTemplate();
+    this._likeButton = this._card.querySelector(".photo-grid__like-button");
     const place = this._card.querySelector(".photo-grid__place");
+    const image = this._card.querySelector(".photo-grid__image");
     place.textContent = this._title;
-    place.alt = this._title;
-    this._card.querySelector(".photo-grid__image").src = this._link;
-    this._addListenersToCardButtons();
+    image.alt = this._title;
+    image.src = this._link;
+    this._addListenerToLike();
+    this._addListenerToDelete();
+    this._addListenerToOpen();
     return this._card;
-  }
-  //ставим карточке лайк
-  _likeCard(likeButton) {
-    likeButton.classList.toggle("photo-grid__like-button_active");
-  }
-  //удаляем карточку
-  _deleteCard() {
+  };
+
+  _likeCardHandler = () => {
+    this._likeButton.classList.toggle("photo-grid__like-button_active");
+  };
+
+  _deleteCardHandler = () => {
     this._card.remove();
-  }
-  //добавляем карточке слушатели
-  _addListenersToCardButtons() {
-    const likeButton = this._card.querySelector(".photo-grid__like-button");
+  };
+
+  _openImagePopup = () => {
+    popupImageText.textContent = this._title;
+    popupImageImage.alt = this._title;
+    popupImageImage.src = this._link;
+    addCloseListeners(popupImage);
+    openPopup(popupImage);
+  };
+
+  _addListenerToLike = () => {
+    this._likeButton.addEventListener("click", this._likeCardHandler);
+  };
+
+  _addListenerToDelete = () => {
     const deleteButton = this._card.querySelector(".photo-grid__trash-button");
-    likeButton.addEventListener("click", () => {
-      this._likeCard(likeButton);
-    });
-    deleteButton.addEventListener("click", () => {
-      this._deleteCard(deleteButton);
-    });
-  }
+    deleteButton.addEventListener("click", this._deleteCardHandler);
+  };
+
+  _addListenerToOpen = () => {
+    const image = this._card.querySelector(".photo-grid__image");
+    image.addEventListener("click", this._openImagePopup);
+  };
 }
