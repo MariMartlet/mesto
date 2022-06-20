@@ -5,13 +5,14 @@ const popupImageText = popupImage.querySelector(".popup__text");
 const popupImageImage = popupImage.querySelector(".popup__image");
 
 export default class Card {
-  constructor(data) {
+  constructor(data, cardTemplate) {
     this._title = data.title;
     this._link = data.link;
+    this._cardTemplate = cardTemplate
   }
 
   _getTemplate = () => {
-    return document.querySelector("#card-template").content.querySelector(".photo-grid__item").cloneNode(true);
+    return document.querySelector(this._cardTemplate).content.querySelector(".photo-grid__item").cloneNode(true);
   };
 
   createCard = () => {

@@ -92,9 +92,10 @@ function addCard(evt) {
   const data = { title, link };
   getCard(data);
   closePopup(popupCard);
+  popupCardForm.reset();
 }
 function createNewCard(data) {
-  const newCard = new Card(data);
+  const newCard = new Card(data, "#card-template");
   return newCard.createCard();
 }
 function getCard(data) {
