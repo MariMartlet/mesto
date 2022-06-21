@@ -118,6 +118,7 @@ function handleEscClose(event) {
   }
 }
 
+
 // вывод массива с начальными карточками
 initialCards.map((card) => getCard(card));
 
