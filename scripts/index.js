@@ -1,6 +1,5 @@
 // импорт классов
-import Card from "./Card.js";
-import popupImage from "./Card.js";
+import {Card, popupImage} from "./Card.js";
 import FormValidator from "./FormValidator.js";
 
 // массив с данными начальных карточек
