@@ -103,7 +103,7 @@ function getCard(data) {
   cardContainer.prepend(newCard);
 }
 
-export function addCloseListeners(popup) {
+function addCloseListeners(popup) {
   popup.addEventListener("click", (evt) => {
     if (evt.target.classList.contains("popup_open") || evt.target.classList.contains("popup__close-button")) {
       closePopup(popup);
