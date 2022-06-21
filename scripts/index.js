@@ -127,5 +127,6 @@ popupCardOpenButton.addEventListener("click", () => {
 });
 addCloseListeners(popupUser);
 addCloseListeners(popupCard);
+addCloseListeners(popupImage);
 popupUserForm.addEventListener("submit", saveUserData);
 popupCardForm.addEventListener("submit", addCard);
