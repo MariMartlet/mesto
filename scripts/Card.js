@@ -1,4 +1,4 @@
-import openPopup from "./index.js";
+import default openPopup from "./index.js";
 
 const popupImage = document.querySelector("#view-image");
 const popupImageText = popupImage.querySelector(".popup__text");
