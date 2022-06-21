@@ -4,7 +4,7 @@ export const popupImage = document.querySelector("#view-image");
 const popupImageText = popupImage.querySelector(".popup__text");
 const popupImageImage = popupImage.querySelector(".popup__image");
 
-export class default Card {
+export class Card {
   constructor(data, cardTemplate) {
     this._title = data.title;
     this._link = data.link;
