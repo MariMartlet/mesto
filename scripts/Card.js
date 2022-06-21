@@ -1,6 +1,6 @@
 import {openPopup} from "./index.js";
 
-const popupImage = document.querySelector("#view-image");
+export const popupImage = document.querySelector("#view-image");
 const popupImageText = popupImage.querySelector(".popup__text");
 const popupImageImage = popupImage.querySelector(".popup__image");
 
