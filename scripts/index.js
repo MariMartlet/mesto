@@ -103,7 +103,7 @@ function getCard(data) {
   cardContainer.prepend(newCard);
 }
 
-function addCloseListeners(popup) {
+export function addCloseListeners(popup) {
   popup.addEventListener("click", (evt) => {
     if (evt.target.classList.contains("popup_open") || evt.target.classList.contains("popup__close-button")) {
       closePopup(popup);
@@ -116,7 +116,6 @@ function handleEscClose(event) {
     closePopup(popup);
   }
 }
-
 
 // вывод массива с начальными карточками
 initialCards.map((card) => getCard(card));
@@ -131,3 +130,4 @@ addCloseListeners(popupCard);
 addCloseListeners(popupImage);
 popupUserForm.addEventListener("submit", saveUserData);
 popupCardForm.addEventListener("submit", addCard);
+
