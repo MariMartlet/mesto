@@ -1,4 +1,4 @@
-import { addCloseListeners, openPopup } from "./index.js";
+import { openPopup } from "./index.js";
 
 const popupImage = document.querySelector("#view-image");
 const popupImageText = popupImage.querySelector(".popup__text");
@@ -41,7 +41,6 @@ export default class Card {
     popupImageText.textContent = this._title;
     popupImageImage.alt = this._title;
     popupImageImage.src = this._link;
-    addCloseListeners(popupImage);
     openPopup(popupImage);
   };
 
