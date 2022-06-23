@@ -23,9 +23,6 @@ export class Card {
     place.textContent = this._title;
     image.alt = this._title;
     image.src = this._link;
-     // ничего страшного, спасибо вам за честность) я потом подправлю, сейчас просто с рабочего компьютера и
-    // нет возможности проверить, все ли правильно исправлю, так как редактирую прямо в гите))
-    // зато вы быстро проверяете)) до этого пришлось сменить группу, так как работу проверяли неделю)
     this._addListenerToLike();
     this._addListenerToDelete();
     this._addListenerToOpen();
