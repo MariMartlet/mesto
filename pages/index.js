@@ -1,5 +1,5 @@
 // импорт классов
-import Card from "./Card.js";
+import {Card, popupImage} from "./Card.js";
 import FormValidator from "./FormValidator.js";
 
 // массив с данными начальных карточек
@@ -127,5 +127,7 @@ popupCardOpenButton.addEventListener("click", () => {
 });
 addCloseListeners(popupUser);
 addCloseListeners(popupCard);
+addCloseListeners(popupImage);
 popupUserForm.addEventListener("submit", saveUserData);
 popupCardForm.addEventListener("submit", addCard);
+
