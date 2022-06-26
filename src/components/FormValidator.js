@@ -49,8 +49,6 @@ export default class FormValidator {
   };
 
   _setEventListeners = (input) => {
-    input.addEventListener("input", () => {
-      this._checkInputValidity(input);
-    });
+    input.addEventListener("input", () => this._checkInputValidity(input));
   };
 }

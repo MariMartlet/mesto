@@ -1,3 +1,5 @@
+import { cardSelectors } from "../utils/constants";
+
 export default class Card {
   constructor(data, cardTemplate, handleCardClick) {
     this._title = data.title;
@@ -7,22 +9,22 @@ export default class Card {
   }
 
   _getTemplate = () => {
-    return document.querySelector(this._cardTemplate).content.querySelector(".photo-grid__item").cloneNode(true);
+    return document.querySelector(this._cardTemplate).content.querySelector(cardSelectors.card).cloneNode(true);
   };
 
   createCard = () => {
     this._card = this._getTemplate();
-    const place = this._card.querySelector(".photo-grid__place");
-    const image = this._card.querySelector(".photo-grid__image");
+    const place = this._card.querySelector(cardSelectors.place);
+    this.image = this._card.querySelector(cardSelectors.image);
     place.textContent = this._title;
-    image.alt = this._title;
-    image.src = this._link;
+    this.image.alt = this._title;
+    this.image.src = this._link;
     this._addListenerToButtons();
     return this._card;
   };
 
   _likeCardHandler = () => {
-    this.likeButton.classList.toggle("photo-grid__like-button_active");
+    this.likeButton.classList.toggle(cardSelectors.likeActive);
   };
 
   _deleteCardHandler = () => {
@@ -30,11 +32,10 @@ export default class Card {
   };
 
   _addListenerToButtons = () => {
-    this.likeButton = this._card.querySelector(".photo-grid__like-button");
+    this.likeButton = this._card.querySelector(cardSelectors.likeButton);
     this.likeButton.addEventListener("click", this._likeCardHandler);
-    const deleteButton = this._card.querySelector(".photo-grid__trash-button");
+    const deleteButton = this._card.querySelector(cardSelectors.deleteButton);
     deleteButton.addEventListener("click", this._deleteCardHandler);
-    const image = this._card.querySelector(".photo-grid__image");
-    image.addEventListener("click", this._handleCardClick);
+    this.image.addEventListener("click", () => this._handleCardClick({ title: this._title, link: this._link }));
   };
 }
