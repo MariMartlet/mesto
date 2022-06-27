@@ -51,6 +51,9 @@ function createNewCard(data) {
 const renderCard = (data) => {
   section.addItem(createNewCard(data));
 } 
+//я пыталась сделать, как Вы сказали в первом варианте, но оно у меня не работало как надо, и я не смогла понять почему
+// надеюсь, этот вариант будет работать
+// спасибо за такой подробный комментарий!
 const popupWithCardForm = new PopupWithForm(popups.card, {
   formSubmitHandler: (data) => {
     renderCard({ link: data.UserPopupImage, title: data.UserPopupTitle });
