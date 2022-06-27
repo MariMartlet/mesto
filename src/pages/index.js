@@ -38,8 +38,8 @@ popupWithImage.setEventListeners();
 
 const section = new Section(
   {
-    items: initialCards, 
-    renderer: renderCard, 
+    items: initialCards,
+    renderer: renderCard,
   },
   cardContainer
 );
@@ -48,12 +48,13 @@ function createNewCard(data) {
   const card = newCard.createCard(data);
   return card;
 }
-const renderCard = (data) => {
+function renderCard(data) {
   section.addItem(createNewCard(data));
-} 
+}
 //я пыталась сделать, как Вы сказали в первом варианте, но оно у меня не работало как надо, и я не смогла понять почему
 // надеюсь, этот вариант будет работать
 // спасибо за такой подробный комментарий!
+//проверила, все сломалось, в общем через константу renderCard не работал по какоф-то причине
 const popupWithCardForm = new PopupWithForm(popups.card, {
   formSubmitHandler: (data) => {
     renderCard({ link: data.UserPopupImage, title: data.UserPopupTitle });
