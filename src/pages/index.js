@@ -38,8 +38,8 @@ popupWithImage.setEventListeners();
 
 const section = new Section(
   {
-    items: initialCards,
-    renderer: (data) => section.addItem(createNewCard(data)),
+    items: initialCards, 
+    renderer: renderCard, 
   },
   cardContainer
 );
@@ -48,9 +48,12 @@ function createNewCard(data) {
   const card = newCard.createCard(data);
   return card;
 }
+const renderCard = (data) => {
+  section.addItem(createNewCard(data));
+} 
 const popupWithCardForm = new PopupWithForm(popups.card, {
   formSubmitHandler: (data) => {
-    section.renderer({ link: data.UserPopupImage, title: data.UserPopupTitle });
+    renderCard({ link: data.UserPopupImage, title: data.UserPopupTitle });
     popupWithCardForm.close();
   },
 });
