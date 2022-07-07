@@ -40,13 +40,11 @@ export default class Api {
         about: data.UserPopupStatus,
       }),
     }).then((res) => {
-      console.log(res);
       return this._getData(res);
     });
   }
 
   updateUserAvatar(data) {
-    console.log(data);
     return fetch(`${this._url}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
