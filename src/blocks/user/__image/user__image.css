@@ -1,5 +1,7 @@
 .user__image {
   height: 120px;
+  width: 120px;
   border-radius: 50%;
-  border: none;
+  object-fit: cover;
+  z-index: -1;
 }

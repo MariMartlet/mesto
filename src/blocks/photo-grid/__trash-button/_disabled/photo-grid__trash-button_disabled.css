@@ -1,0 +1,4 @@
+.photo-grid__trash-button_disabled {
+  display: none;
+  visibility: hidden;
+}

@@ -1,9 +1,9 @@
 // массив с данными начальных карточек
 export const initialCards = [
-  // {
-  //   title: "Архыз",
-  //   link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  // },
+  {
+    title: "Архыз",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
+  },
   {
     title: "Челябинская область",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
@@ -39,9 +39,11 @@ export const selectors = {
 };
 
 export const popups = {
-  user: "#edit_user",
+  user: "#edit_user_info",
   image: "#view-image",
   card: "#add_card",
+  confirm: "#confirmation-delete",
+  avatar: "#edit_user_avatar",
 };
 
 export const cardSelectors = {
@@ -56,12 +58,16 @@ export const cardSelectors = {
   popupText: ".popup__text",
   popupImage: ".popup__image",
   addButton: ".user__add-button",
+  likeCounter: ".photo-grid__like-counter",
+  deleteDisabled: "photo-grid__trash-button_disabled",
 };
 
 export const userSelectors = {
-  openButton: ".user__edit-button",
+  openButtonEditAvatar: ".user__edit-button_avatar",
+  openButtonEditName: ".user__edit-button_name",
   inputName: ".popup__input_name",
   inputStatus: ".popup__input_status",
   name: ".user__name",
   status: ".user__status",
+  avatar: ".user__image",
 };

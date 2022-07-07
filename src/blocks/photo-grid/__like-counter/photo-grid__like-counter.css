@@ -1,0 +1,13 @@
+.photo-grid__like-counter {
+  border: none;
+  outline: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: black;
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin-top: 20px;
+}
