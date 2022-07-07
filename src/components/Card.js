@@ -1,4 +1,3 @@
-import { data } from "autoprefixer";
 import { cardSelectors } from "../utils/constants.js";
 
 export default class Card {
