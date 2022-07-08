@@ -1,14 +1,14 @@
 import { cardSelectors } from "../utils/constants.js";
 
 export default class Card {
-  constructor(data, myId, cardTemplate, { handleCardClick, likeCardClick, dislikeCardClick, deleteCardClick }) {
+  constructor(data, myId, cardTemplate, { handleCardClick, likeCardClick, dislikeCardClick, handleDeleteCardClick }) {
     this._title = data.name;
     this._link = data.link;
     this._cardTemplate = cardTemplate;
     this._handleCardClick = handleCardClick;
     this._likeCardClick = likeCardClick;
     this._dislikeCardClick = dislikeCardClick;
-    this._deleteCardClick = deleteCardClick;
+    this._deleteCardClick = handleDeleteCardClick;
     this._id = data._id;
     this._ownerId = data.owner._id;
     this._myId = myId;
@@ -75,7 +75,7 @@ export default class Card {
 
   _addListenerToButtons = () => {
     this._likeButton.addEventListener("click", this._checkLikeEnabled);
-    this._deleteButton.addEventListener("click", this._deleteCardClick);
+    this._deleteButton.addEventListener("click", () => this._deleteCardClick({ id: this._id }));
     this._image.addEventListener("click", () => this._handleCardClick({ title: this._title, link: this._link }));
   };
 }

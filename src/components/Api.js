@@ -88,13 +88,9 @@ export default class Api {
   }
 
   deleteCard(data) {
-    return fetch(`${this._url}/cards/${data._id}`, {
+    return fetch(`${this._url}/cards/${data.id}`, {
       method: "DELETE",
       headers: this._headers,
-      body: JSON.stringify({
-        name: data.UserPopupTitle,
-        link: data.UserPopupImage,
-      }),
     }).then((res) => {
       return this._getData(res);
     });

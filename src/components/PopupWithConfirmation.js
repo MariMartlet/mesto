@@ -2,11 +2,12 @@ import { selectors } from "../utils/constants.js";
 import Popup from "./Popup.js";
 
 export default class PopupWithConfirmation extends Popup {
-  constructor(popupSelector, { confirmSubmitHandler }) {
+  constructor(popupSelector, confirmSubmitHandler) {
     super(popupSelector);
     this._confirmSubmitHandler = confirmSubmitHandler;
-    this._submit = this._submit.bind(this);
     this._form = this._popup.querySelector(selectors.formSelector);
+    this._saveButton = null;
+    this._saveButtonText = "";
   }
 
   open(data) {
@@ -14,11 +15,19 @@ export default class PopupWithConfirmation extends Popup {
     this._data = data;
   }
 
-  _submit(evt) {
+  visibleLoading = (popupSelector) => {
+    this._saveButton = document.querySelector(popupSelector).querySelector(selectors.submitButtonSelector);
+    this._saveButtonText = this._saveButton.textContent;
+    this._saveButton.textContent = "Удаление...";
+  };
+  hiddenLoading = () => {
+    this._saveButton.textContent = this._saveButtonText;
+  };
+
+  _submit = (evt) => {
     evt.preventDefault();
     this._confirmSubmitHandler(this._data);
-    this._form.removeEventListener("submit", this._submit);
-  }
+  };
 
   setEventListeners() {
     super.setEventListeners();

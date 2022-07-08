@@ -33,8 +33,7 @@ createCardValidation.enableValidation();
 avatarUpdateValidation.enableValidation();
 
 let myId = "";
-let saveButton = null;
-let saveButtonText = "";
+let cardFromDelete = null;
 
 const url = "https://mesto.nomoreparties.co/v1/cohort-43";
 const headers = {
@@ -55,22 +54,13 @@ function getAllData() {
       section.renderItems(cards);
     })
     .catch((err) => {
-      console.log(err);
+      console.error(err);
     });
-}
-
-function visibleLoading(popupSelector) {
-  saveButton = document.querySelector(popupSelector).querySelector(selectors.submitButtonSelector);
-  saveButtonText = saveButton.textContent;
-  saveButton.textContent = "Сохранение...";
-}
-function hiddenLoading() {
-  saveButton.textContent = saveButtonText;
 }
 
 const popupWithUserForm = new PopupWithForm(popups.user, {
   formSubmitHandler: (data) => {
-    visibleLoading(popups.user);
+    popupWithUserForm.visibleLoading(popups.user);
     api
       .updateUserInfo(data)
       .then((_data) => {
@@ -78,10 +68,10 @@ const popupWithUserForm = new PopupWithForm(popups.user, {
         popupWithUserForm.close();
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
       })
       .finally(() => {
-        hiddenLoading();
+        popupWithUserForm.hiddenLoading();
       });
   },
 });
@@ -89,7 +79,7 @@ popupWithUserForm.setEventListeners();
 
 const popupWithUserAvatar = new PopupWithForm(popups.avatar, {
   formSubmitHandler: (data) => {
-    visibleLoading(popups.avatar);
+    popupWithUserAvatar.visibleLoading(popups.avatar);
     api
       .updateUserAvatar(data)
       .then((data) => {
@@ -97,10 +87,10 @@ const popupWithUserAvatar = new PopupWithForm(popups.avatar, {
         popupWithUserAvatar.close();
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
       })
       .finally(() => {
-        hiddenLoading();
+        popupWithUserAvatar.hiddenLoading();
       });
   },
 });
@@ -108,7 +98,7 @@ popupWithUserAvatar.setEventListeners();
 
 const popupWithCardForm = new PopupWithForm(popups.card, {
   formSubmitHandler: (data) => {
-    visibleLoading(popups.card);
+    popupWithCardForm.visibleLoading(popups.card);
     api
       .addCard(data)
       .then((_data) => {
@@ -116,10 +106,10 @@ const popupWithCardForm = new PopupWithForm(popups.card, {
         popupWithCardForm.close();
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
       })
       .finally(() => {
-        hiddenLoading();
+        popupWithCardForm.hiddenLoading();
       });
   },
 });
@@ -144,7 +134,6 @@ function readUserData() {
   profileValidation.toggleButtonState();
   popupWithUserForm.open();
 }
-
 function createNewCard(data) {
   const newCard = new Card(data, myId, cardSelectors.template, {
     handleCardClick,
@@ -156,7 +145,7 @@ function createNewCard(data) {
           newCard.likeCardHandler();
         })
         .catch((err) => {
-          console.log(err);
+          console.error(err);
         });
     },
     dislikeCardClick: () => {
@@ -167,29 +156,12 @@ function createNewCard(data) {
           newCard.dislikeCardHandler();
         })
         .catch((err) => {
-          console.log(err);
+          console.error(err);
         });
     },
-    deleteCardClick: () => {
-      const popupWithConfirmation = new PopupWithConfirmation(popups.confirm, {
-        confirmSubmitHandler: (data) => {
-          visibleLoading(popups.confirm);
-          api
-            .deleteCard(data)
-            .then((data) => {
-              newCard.deleteCardHandler(data);
-              popupWithConfirmation.close();
-            })
-            .catch((err) => {
-              alert(err);
-            })
-            .finally(() => {
-              hiddenLoading(popups.confirm);
-            });
-        },
-      });
-      popupWithConfirmation.setEventListeners();
-      popupWithConfirmation.open(data);
+    handleDeleteCardClick: (data) => {
+      handleDeleteCardClick(data);
+      cardFromDelete = newCard;
     },
   });
   const card = newCard.createCard(data);
@@ -204,16 +176,39 @@ function addCard() {
 function handleCardClick(data) {
   popupWithImage.open(data);
 }
-function openAvatarPopup() {
-  popupWithUserAvatar.open(popups.avatar);
+
+const popupWithConfirmation = new PopupWithConfirmation(popups.confirm, deleteCardClick);
+popupWithConfirmation.setEventListeners();
+
+function deleteCardClick(data) {
+  popupWithConfirmation.visibleLoading(popups.confirm);
+  api
+    .deleteCard(data)
+    .then((data) => {
+      cardFromDelete.deleteCardHandler(data);
+      popupWithConfirmation.close();
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      popupWithConfirmation.hiddenLoading(popups.confirm);
+    });
+}
+
+function handleDeleteCardClick(data) {
+  popupWithConfirmation.open(data);
 }
 
 popupUserOpenButton.addEventListener("click", readUserData);
 popupCardOpenButton.addEventListener("click", () => {
-  addCard();
   createCardValidation.toggleButtonState();
+  addCard();
 });
 
-popupAvatarOpenButton.addEventListener("click", openAvatarPopup);
+popupAvatarOpenButton.addEventListener("click", () => {
+  avatarUpdateValidation.toggleButtonState();
+  popupWithUserAvatar.open(popups.avatar);
+});
 
 getAllData();
