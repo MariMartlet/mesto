@@ -6,17 +6,17 @@ export default class PopupWithConfirmation extends Popup {
     super(popupSelector);
     this._confirmSubmitHandler = confirmSubmitHandler;
     this._form = this._popup.querySelector(selectors.formSelector);
-    this._saveButton = null;
+    this._saveButton = this._popup.querySelector(selectors.submitButtonSelector);
     this._saveButtonText = "";
   }
 
-  open(data) {
+  open(data, card) {
     super.open();
     this._data = data;
+    this._card = card;
   }
 
-  visibleLoading = (popupSelector) => {
-    this._saveButton = document.querySelector(popupSelector).querySelector(selectors.submitButtonSelector);
+  visibleLoading = () => {
     this._saveButtonText = this._saveButton.textContent;
     this._saveButton.textContent = "Удаление...";
   };
@@ -26,7 +26,7 @@ export default class PopupWithConfirmation extends Popup {
 
   _submit = (evt) => {
     evt.preventDefault();
-    this._confirmSubmitHandler(this._data);
+    this._confirmSubmitHandler(this._data, this._card);
   };
 
   setEventListeners() {

@@ -33,7 +33,6 @@ createCardValidation.enableValidation();
 avatarUpdateValidation.enableValidation();
 
 let myId = "";
-let cardFromDelete = null;
 
 const url = "https://mesto.nomoreparties.co/v1/cohort-43";
 const headers = {
@@ -159,9 +158,8 @@ function createNewCard(data) {
           console.error(err);
         });
     },
-    handleDeleteCardClick: (data) => {
-      handleDeleteCardClick(data);
-      cardFromDelete = newCard;
+    deleteCardClick: (data) => {
+      popupWithConfirmation.open(data, newCard);
     },
   });
   const card = newCard.createCard(data);
@@ -180,12 +178,12 @@ function handleCardClick(data) {
 const popupWithConfirmation = new PopupWithConfirmation(popups.confirm, deleteCardClick);
 popupWithConfirmation.setEventListeners();
 
-function deleteCardClick(data) {
+function deleteCardClick(data, card) {
   popupWithConfirmation.visibleLoading(popups.confirm);
   api
     .deleteCard(data)
-    .then((data) => {
-      cardFromDelete.deleteCardHandler(data);
+    .then(() => {
+      card.deleteCardHandler();
       popupWithConfirmation.close();
     })
     .catch((err) => {
@@ -194,10 +192,6 @@ function deleteCardClick(data) {
     .finally(() => {
       popupWithConfirmation.hiddenLoading(popups.confirm);
     });
-}
-
-function handleDeleteCardClick(data) {
-  popupWithConfirmation.open(data);
 }
 
 popupUserOpenButton.addEventListener("click", readUserData);
